@@ -1,7 +1,7 @@
 CXX = clang++
-SDL = -F/Library/Frameworks -framework SDL2
+SDL = -Flib/ -framework SDL2
 # If your compiler is a bit older you may need to change -std=c++11 to -std=c++0x
-CXXFLAGS = -Wall -c -std=c++11 -F/Library/Frameworks
+CXXFLAGS = -Wall -c -std=c++11 -Flib/
 LDFLAGS = $(SDL)
 EXE = game
 
