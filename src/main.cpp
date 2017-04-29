@@ -4,16 +4,24 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-bool quit = false;
-SDL_Event e;
+enum KeyPressSurfaces {
+  KEY_PRESS_SURFACE_DEFAULT,
+  KEY_PRESS_SURFACE_UP,
+  KEY_PRESS_SURFACE_DOWN,
+  KEY_PRESS_SURFACE_LEFT,
+  KEY_PRESS_SURFACE_RIGHT,
+  KEY_PRESS_SURFACE_TOTAL
+};
 
 bool init();
 bool loadMedia();
 void close();
+SDL_Surface* loadSurface(const char* path);
 
 SDL_Window* gWindow = NULL;
 SDL_Surface* gScreenSurface = NULL;
 SDL_Surface* gHelloWorld = NULL;
+SDL_Surface* gKeyPressSurfaces[KEY_PRESS_SURFACE_TOTAL];
 
 bool init() {
   bool success = false;
@@ -36,26 +44,42 @@ bool init() {
   return success;
 }
 
-bool loadMedia() {
-  bool success = false;
-  const char* resLocation = "../res/hello_world.bmp";
-  gHelloWorld = SDL_LoadBMP(resLocation);
-  if (gHelloWorld == NULL) {
-    printf("Unable to load image %s! SDL Error %s\n",
-           resLocation, 
-           SDL_GetError());
-  } else {
-    success = true;
-  }
-  return success;
-}
-           
 void close() {
   SDL_FreeSurface(gHelloWorld);
   gHelloWorld = NULL;
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
   SDL_Quit();
+}
+
+SDL_Surface* loadSurface(const char* path) {
+  SDL_Surface* loadedSurface = SDL_LoadBMP(path);
+  if(loadedSurface == NULL) {
+    printf("Unable to load image %s! SDL Error: %s\n", path, SDL_GetError());
+  }
+  return loadedSurface;
+}
+
+bool loadMediaItem(KeyPressSurfaces s, 
+                   const char* path,
+                   const char* name) {
+  bool success = true;
+  gKeyPressSurfaces[s] = loadSurface(path);
+  if (gKeyPressSurfaces[s] == NULL) {
+    printf("Failed to load %s image!\n", name);
+    success = false;
+  }
+  return success;
+}
+
+bool loadMedia() {
+  bool success = true;
+  success = loadMediaItem(KEY_PRESS_SURFACE_DEFAULT, "../res/press.bmp", "default") && success;
+  success = loadMediaItem(KEY_PRESS_SURFACE_UP, "../res/up.bmp", "up") && success;
+  success = loadMediaItem(KEY_PRESS_SURFACE_DOWN, "../res/down.bmp", "down") && success;
+  success = loadMediaItem(KEY_PRESS_SURFACE_LEFT, "../res/left.bmp", "left") && success;
+  success = loadMediaItem(KEY_PRESS_SURFACE_RIGHT, "../res/right.bmp", "right") && success;
+  return success;
 }
 
 int main(int argc, char* args[]) {
@@ -72,11 +96,43 @@ int main(int argc, char* args[]) {
       SDL_UpdateWindowSurface(gWindow);
     }
   }
+
+  bool quit = false;
+  SDL_Event e;
+  SDL_Surface* gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
+
   while (!quit) {
     while (SDL_PollEvent(&e) != 0) {
       if (e.type == SDL_QUIT) {
         quit = true;
+      } else if (e.type == SDL_KEYDOWN) {
+        switch(e.key.keysym.sym) {
+        case SDLK_UP:
+          gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
+          break;
+          
+        case SDLK_DOWN:
+          gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
+          break;
+          
+        case SDLK_LEFT:
+          gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
+          break;
+
+        case SDLK_RIGHT:
+          gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
+          break;
+
+        default:
+          gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
+          break;
+
+        }
       }
+
+      SDL_BlitSurface(gCurrentSurface, NULL, gScreenSurface, NULL);
+      SDL_UpdateWindowSurface(gWindow);
+
     }
   }
   close();
