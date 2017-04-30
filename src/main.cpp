@@ -8,11 +8,11 @@ const int SCREEN_HEIGHT = 768;
 bool init();
 bool loadMedia();
 void close();
-SDL_Surface* loadSurface(const char* path);
+SDL_Texture* loadTexture(const char* path);
 
 SDL_Window* gWindow = NULL;
-SDL_Surface* gScreenSurface = NULL;
-SDL_Surface* images[1];
+SDL_Renderer* gRenderer = NULL;
+SDL_Texture* gTexture = NULL;
 
 bool init() {
   bool success = false;
@@ -30,13 +30,19 @@ bool init() {
       printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
       success = false;
     } else {
-      int imgFlags = IMG_INIT_PNG;
-      if(!(IMG_Init(imgFlags) & imgFlags)) {
-        printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+      gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+      if (gRenderer == NULL) {
+        printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
         success = false;
       } else {
-        gScreenSurface = SDL_GetWindowSurface(gWindow);
-        success = true;
+        SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        int imgFlags = IMG_INIT_PNG;
+        if(!(IMG_Init(imgFlags) & imgFlags)) {
+          printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+          success = false;
+        } else {
+          success = true;
+        }
       }
     }
   }
@@ -44,70 +50,53 @@ bool init() {
 }
 
 void close() {
-  for(int i = 0; i < sizeof(images); i++ ){
-    SDL_FreeSurface(images[i]);
-  }
+  SDL_DestroyTexture(gTexture);
+  gTexture = NULL;
+  SDL_DestroyRenderer(gRenderer);
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
+  gRenderer = NULL;
+  IMG_Quit();
   SDL_Quit();
 }
 
-SDL_Surface* loadSurface(const char* path) {
-  SDL_Surface* optimizedSurface = NULL;
+SDL_Texture* loadTexture(const char* path) {
+  SDL_Texture* newTexture = NULL;
   SDL_Surface* loadedSurface = IMG_Load(path);
-  if(loadedSurface == NULL) {
-    printf("Unable to load image %s! SDL Error: %s\n", path, SDL_GetError());
+  if (loadedSurface == NULL) {
+    printf("Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError());
   } else {
-    optimizedSurface = SDL_ConvertSurface(loadedSurface, gScreenSurface->format, 0);
-    if (optimizedSurface == NULL) {
-      printf("Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError());
+    newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
+    if (newTexture == NULL) {
+      printf("Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());
     }
     SDL_FreeSurface(loadedSurface);
   }
-  return optimizedSurface;
+  return newTexture;
 }
 
-bool loadMediaItem(int s, 
-                   const char* path,
-                   const char* name) {
+bool loadMedia() {
   bool success = true;
-  images[s] = loadSurface(path);
-  if (images[s] == NULL) {
-    printf("Failed to load %s image!\n", name);
+  gTexture = loadTexture("../res/elements.png");
+  if (gTexture == NULL) {
+    printf("Failed to load texture image!\n");
     success = false;
   }
   return success;
 }
 
-bool loadMedia() {
-  bool success = true;
-  success = loadMediaItem(0, "../res/elements.png", "elements");
-  return success;
-}
-
 int main(int argc, char* args[]) {
-  SDL_Rect stretchRect;
   if(!init()) {
     printf("Failed to initialize!\n");
   } else {
     if(!loadMedia()) {
       printf("Failed to load media!\n");
-    } else {
-      stretchRect.x = 0;
-      stretchRect.y = 0;
-      stretchRect.w = SCREEN_WIDTH;
-      stretchRect.h = SCREEN_HEIGHT;
-      SDL_BlitScaled(images[0],
-                      NULL,
-                      gScreenSurface,
-                      &stretchRect);
-      SDL_UpdateWindowSurface(gWindow);
     }
   }
 
   bool quit = false;
   SDL_Event e;
-  SDL_Surface* gCurrentSurface = images[0];
+
 
   while (!quit) {
     while (SDL_PollEvent(&e) != 0) {
@@ -115,12 +104,9 @@ int main(int argc, char* args[]) {
         quit = true;
       }
 
-      SDL_BlitScaled(gCurrentSurface,
-                     NULL,
-                     gScreenSurface,
-                     &stretchRect);
-      SDL_UpdateWindowSurface(gWindow);
-
+      SDL_RenderClear(gRenderer);
+      SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+      SDL_RenderPresent(gRenderer);
     }
   }
   close();
