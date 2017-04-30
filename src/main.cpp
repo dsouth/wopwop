@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
 #include <stdio.h>
 
 const int SCREEN_WIDTH = 640;
@@ -27,6 +28,7 @@ bool init() {
   bool success = false;
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+    success = false;
   } else {
     gWindow = SDL_CreateWindow("SDL Tutorial", 
                                SDL_WINDOWPOS_UNDEFINED, 
@@ -36,9 +38,16 @@ bool init() {
                                SDL_WINDOW_SHOWN);
     if (gWindow == NULL) {
       printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+      success = false;
     } else {
-      gScreenSurface = SDL_GetWindowSurface(gWindow);
-      success = true;
+      int imgFlags = IMG_INIT_PNG;
+      if(!(IMG_Init(imgFlags) & imgFlags)) {
+        printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+        success = false;
+      } else {
+        gScreenSurface = SDL_GetWindowSurface(gWindow);
+        success = true;
+      }
     }
   }
   return success;
