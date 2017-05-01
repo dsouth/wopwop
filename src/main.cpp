@@ -2,8 +2,10 @@
 #include <SDL2_image/SDL_image.h>
 #include <stdio.h>
 
-const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 768;
+#include "texture.h"
+
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
 
 bool init();
 bool loadMedia();
@@ -12,13 +14,16 @@ void close();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
+texture gFooTexture;
+texture gBackgroundTexture;
+
 bool init() {
   bool success = false;
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
     success = false;
   } else {
-    gWindow = SDL_CreateWindow("SDL Tutorial", 
+    gWindow = SDL_CreateWindow("Wop Wop", 
                                SDL_WINDOWPOS_UNDEFINED, 
                                SDL_WINDOWPOS_UNDEFINED, 
                                SCREEN_WIDTH,
@@ -38,10 +43,14 @@ bool init() {
       }
     }
   }
+  gFooTexture = {NULL, 0, 0};
+  gBackgroundTexture = {NULL, 0, 0};
   return success;
 }
 
 void close() {
+  freeTexture(&gFooTexture);
+  freeTexture(&gBackgroundTexture);
   SDL_DestroyRenderer(gRenderer);
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
@@ -52,6 +61,14 @@ void close() {
 
 bool loadMedia() {
   bool success = true;
+  if(!loadTextureFromFile(&gFooTexture, gRenderer, "res/foo.png")){
+    printf("Failed to load Foo's texture image!\n");
+    success = false;
+  }
+  if(!loadTextureFromFile(&gBackgroundTexture, gRenderer, "res/background.png")) {
+    printf("Failed to load background texture image!\n");
+    success = false;
+  }
   return success;
 }
 
@@ -67,34 +84,16 @@ int main(int argc, char* args[]) {
   bool quit = false;
   SDL_Event e;
 
-
   while (!quit) {
     while (SDL_PollEvent(&e) != 0) {
       if (e.type == SDL_QUIT) {
         quit = true;
       }
 
-      SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00,  0x00, 0xFF);
+      SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
       SDL_RenderClear(gRenderer);
-
-      SDL_Rect fillRect = {SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4,
-                           SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2};
-      SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0x00, 0xFF);
-      SDL_RenderFillRect(gRenderer, &fillRect);
-
-      SDL_Rect outlineRect = {SCREEN_WIDTH / 6, SCREEN_HEIGHT / 6,
-                              SCREEN_WIDTH * 2 / 3, SCREEN_HEIGHT * 2 / 3};
-      SDL_SetRenderDrawColor(gRenderer, 0x00, 0xFF, 0x00, 0xFF);
-      SDL_RenderDrawRect(gRenderer, &outlineRect);
-
-      SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
-      SDL_RenderDrawLine(gRenderer, 0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2);
-
-      SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0x00, 0xFF);
-      for(int i = 0; i < SCREEN_HEIGHT; i += 4) {
-        SDL_RenderDrawPoint(gRenderer, SCREEN_WIDTH / 2, i);
-      }
-
+      renderTexture(&gBackgroundTexture, gRenderer, 0, 0);
+      renderTexture(&gFooTexture, gRenderer, 240, 190);
       SDL_RenderPresent(gRenderer);
     }
   }

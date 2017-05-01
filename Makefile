@@ -7,12 +7,14 @@ EXE = game
 
 all: $(EXE)
 
-$(EXE): src/main.o
-	$(CXX) $(LDFLAGS) $< -o bin/$@
+$(EXE): src/main.o src/texture.o
+	$(CXX) $(LDFLAGS) src/main.o src/texture.o -o bin/$@
 
 main.o: src/main.cpp
-	$(CXX) $(CXXFLAGS) $< -o src/$@clean:
-	rm src/*.o && rm bin/$(EXE)
+	$(CXX) $(CXXFLAGS) $< -o src/$@
+
+texture.0: src/texture.cpp
+	$(CXX) $(CXXFLAGS) $< -o src/$@
 
 clean:
 	rm src/*.o && rm bin/$(EXE)
