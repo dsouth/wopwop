@@ -6,6 +6,7 @@ struct texture {
   int height;
 };
 
-bool loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
+texture* init_texture();
+int loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
 void renderTexture(texture* t, SDL_Renderer* r, int x, int y);
 void freeTexture(texture* t);

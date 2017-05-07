@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
+#include <SDL2/SDL_image.h>
 #include <stdio.h>
 
 #include "texture.h"
@@ -7,21 +7,21 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-bool init();
-bool loadMedia();
+int init();
+int loadMedia();
 void close();
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
-texture gFooTexture;
-texture gBackgroundTexture;
+texture* gFooTexture;
+texture* gBackgroundTexture;
 
-bool init() {
-  bool success = false;
+int init() {
+  int success = 0;
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-    success = false;
+    success = 0;
   } else {
     gWindow = SDL_CreateWindow("Wop Wop", 
                                SDL_WINDOWPOS_UNDEFINED, 
@@ -31,26 +31,26 @@ bool init() {
                                SDL_WINDOW_SHOWN);
     if (gWindow == NULL) {
       printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-      success = false;
+      success = 0;
     } else {
       gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
       if (gRenderer == NULL) {
         printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
-        success = false;
+        success = 0;
       } else {
         SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-        success = true;
+        success = 1;
       }
     }
   }
-  gFooTexture = {NULL, 0, 0};
-  gBackgroundTexture = {NULL, 0, 0};
+  gFooTexture = init_texture();
+  gBackgroundTexture = init_texture();
   return success;
 }
 
 void close() {
-  freeTexture(&gFooTexture);
-  freeTexture(&gBackgroundTexture);
+  freeTexture(gFooTexture);
+  freeTexture(gBackgroundTexture);
   SDL_DestroyRenderer(gRenderer);
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
@@ -59,15 +59,15 @@ void close() {
   SDL_Quit();
 }
 
-bool loadMedia() {
-  bool success = true;
-  if(!loadTextureFromFile(&gFooTexture, gRenderer, "res/foo.png")){
+int loadMedia() {
+  int success = 1;
+  if(!loadTextureFromFile(gFooTexture, gRenderer, "res/foo.png")){
     printf("Failed to load Foo's texture image!\n");
-    success = false;
+    success = 0;
   }
-  if(!loadTextureFromFile(&gBackgroundTexture, gRenderer, "res/background.png")) {
+  if(!loadTextureFromFile(gBackgroundTexture, gRenderer, "res/background.png")) {
     printf("Failed to load background texture image!\n");
-    success = false;
+    success = 0;
   }
   return success;
 }
@@ -81,19 +81,19 @@ int main(int argc, char* args[]) {
     }
   }
 
-  bool quit = false;
+  int quit = 0;
   SDL_Event e;
 
   while (!quit) {
     while (SDL_PollEvent(&e) != 0) {
       if (e.type == SDL_QUIT) {
-        quit = true;
+        quit = 1;
       }
 
       SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
       SDL_RenderClear(gRenderer);
-      renderTexture(&gBackgroundTexture, gRenderer, 0, 0);
-      renderTexture(&gFooTexture, gRenderer, 240, 190);
+      renderTexture(gBackgroundTexture, gRenderer, 0, 0);
+      renderTexture(gFooTexture, gRenderer, 240, 190);
       SDL_RenderPresent(gRenderer);
     }
   }

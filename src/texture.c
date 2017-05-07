@@ -1,9 +1,17 @@
 #include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
+#include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include "texture.h"
 
-bool loadTextureFromFile(texture* t, SDL_Renderer* renderer, const char* path) {
+texture* init_texture() {
+  texture* c = (texture*)malloc(sizeof(texture));
+  c->texture = NULL;
+  c->width = 0;
+  c->height = 0;
+  return c;
+}
+
+int loadTextureFromFile(texture* t, SDL_Renderer* renderer, const char* path) {
   freeTexture(t);
   SDL_Texture* newTexture = NULL;
   SDL_Surface* loadedSurface = IMG_Load(path);
