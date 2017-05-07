@@ -44,13 +44,20 @@ void setAlphaTexture(texture* t, Uint8 a) {
   SDL_SetTextureAlphaMod(t->texture, a);
 }
 
-void renderTexture(texture* t, SDL_Renderer* renderer, int x, int y, SDL_Rect* clip) {
+void renderTexture(texture* t, 
+                   SDL_Renderer* renderer, 
+                   int x, 
+                   int y, 
+                   SDL_Rect* clip,
+                   double angle,
+                   SDL_Point* center,
+                   SDL_RendererFlip flip) {
   SDL_Rect renderQuad = {x, y, t->width, t->height};
   if (clip != NULL) {
     renderQuad.w = clip->w;
     renderQuad.h = clip->h;
   }
-  SDL_RenderCopy(renderer, t->texture, clip, &renderQuad);
+  SDL_RenderCopyEx(renderer, t->texture, clip, &renderQuad, angle, center, flip);
 }
 
 void freeTexture(texture* t) {

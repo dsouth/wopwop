@@ -11,5 +11,12 @@ int loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
 void setColorTexture(texture* t, Uint8 r, Uint8 g, Uint8 b);
 void setBlendModeTexture(texture* t, SDL_BlendMode bleeding);
 void setAlphaTexture(texture* t, Uint8 a);
-void renderTexture(texture* t, SDL_Renderer* r, int x, int y, SDL_Rect* clip);
+void renderTexture(texture* t, 
+                   SDL_Renderer* r, 
+                   int x, 
+                   int y, 
+                   SDL_Rect* clip,
+                   double angle,
+                   SDL_Point* center,
+                   SDL_RendererFlip flip);
 void freeTexture(texture* t);
