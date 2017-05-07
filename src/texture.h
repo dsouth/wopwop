@@ -8,5 +8,5 @@ struct texture {
 
 texture* init_texture();
 int loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
-void renderTexture(texture* t, SDL_Renderer* r, int x, int y);
+void renderTexture(texture* t, SDL_Renderer* r, int x, int y, SDL_Rect* clip);
 void freeTexture(texture* t);

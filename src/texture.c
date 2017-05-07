@@ -32,9 +32,13 @@ int loadTextureFromFile(texture* t, SDL_Renderer* renderer, const char* path) {
   return t->texture != NULL;
 }
 
-void renderTexture(texture* t, SDL_Renderer* renderer, int x, int y) {
+void renderTexture(texture* t, SDL_Renderer* renderer, int x, int y, SDL_Rect* clip) {
   SDL_Rect renderQuad = {x, y, t->width, t->height};
-  SDL_RenderCopy(renderer, t->texture, NULL, &renderQuad);
+  if (clip != NULL) {
+    renderQuad.w = clip->w;
+    renderQuad.h = clip->h;
+  }
+  SDL_RenderCopy(renderer, t->texture, clip, &renderQuad);
 }
 
 void freeTexture(texture* t) {
