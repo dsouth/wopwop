@@ -36,6 +36,14 @@ void setColorTexture(texture* t, Uint8 r, Uint8 g, Uint8 b) {
   SDL_SetTextureColorMod(t->texture, r, g, b);
 }
 
+void setBlendModeTexture(texture* t, SDL_BlendMode b) {
+  SDL_SetTextureBlendMode(t->texture, b);
+}
+
+void setAlphaTexture(texture* t, Uint8 a) {
+  SDL_SetTextureAlphaMod(t->texture, a);
+}
+
 void renderTexture(texture* t, SDL_Renderer* renderer, int x, int y, SDL_Rect* clip) {
   SDL_Rect renderQuad = {x, y, t->width, t->height};
   if (clip != NULL) {

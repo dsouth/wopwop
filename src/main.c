@@ -14,7 +14,8 @@ void close();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
-texture* gColors;
+texture* gModulatedTexture;
+texture* gBackgroundTexture;
 
 int init() {
   int success = 0;
@@ -42,12 +43,14 @@ int init() {
       }
     }
   }
-  gColors = init_texture();
+  gModulatedTexture = init_texture();
+  gBackgroundTexture = init_texture();
   return success;
 }
 
 void close() {
-  freeTexture(gColors);
+  freeTexture(gModulatedTexture);
+  freeTexture(gBackgroundTexture);
   SDL_DestroyRenderer(gRenderer);
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
@@ -58,8 +61,14 @@ void close() {
 
 int loadMedia() {
   int success = 1;
-  if(!loadTextureFromFile(gColors, gRenderer, "res/colors.png")){
-    printf("Failed to load colors texture!\n");
+  if(!loadTextureFromFile(gModulatedTexture, gRenderer, "res/fadeout.png")){
+    printf("Failed to load front texture!\n");
+    success = 0;
+  } else {
+    setBlendModeTexture(gModulatedTexture, SDL_BLENDMODE_BLEND);
+  }
+  if(!loadTextureFromFile(gBackgroundTexture, gRenderer, "res/fadein.png")) {
+    printf("Failed to load background texture!\n");
     success = 0;
   }
   return success;
@@ -76,41 +85,33 @@ int main(int argc, char* args[]) {
 
   int quit = 0;
   SDL_Event e;
-  Uint8 r = 255;
-  Uint8 g = 255;
-  Uint8 b = 255;
+  Uint8 a = 255;
 
   while (!quit) {
     while (SDL_PollEvent(&e) != 0) {
       if (e.type == SDL_QUIT) {
         quit = 1;
       } else if (e.type == SDL_KEYDOWN) {
-        switch(e.key.keysym.sym) {
-        case SDLK_q:
-          r += 32;
-          break;
-        case SDLK_w:
-          g += 32;
-          break;
-        case SDLK_e:
-          b += 32;
-          break;
-        case SDLK_a:
-          r -= 32;
-          break;
-        case SDLK_s:
-          g -= 32;
-          break;
-        case SDLK_d:
-          b -= 32;
-          break;
+        if (e.key.keysym.sym == SDLK_w) {
+          if (a + 32 > 255) {
+            a = 255;
+          } else {
+            a += 32;
+          }
+        } else if (e.key.keysym.sym == SDLK_s) {
+          if (a - 32 < 0) {
+            a = 0;
+          } else {
+            a -= 32;
+          }
         }
       }
         
       SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
       SDL_RenderClear(gRenderer);
-      setColorTexture(gColors, r, g, b);
-      renderTexture(gColors, gRenderer, 0, 0, NULL);
+      renderTexture(gBackgroundTexture, gRenderer, 0, 0, NULL);
+      setAlphaTexture(gModulatedTexture, a);
+      renderTexture(gModulatedTexture, gRenderer, 0, 0, NULL);
       SDL_RenderPresent(gRenderer);
     }
   }
