@@ -8,5 +8,6 @@ struct texture {
 
 texture* init_texture();
 int loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
+void setColorTexture(texture* t, Uint8 r, Uint8 g, Uint8 b);
 void renderTexture(texture* t, SDL_Renderer* r, int x, int y, SDL_Rect* clip);
 void freeTexture(texture* t);

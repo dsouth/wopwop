@@ -32,6 +32,10 @@ int loadTextureFromFile(texture* t, SDL_Renderer* renderer, const char* path) {
   return t->texture != NULL;
 }
 
+void setColorTexture(texture* t, Uint8 r, Uint8 g, Uint8 b) {
+  SDL_SetTextureColorMod(t->texture, r, g, b);
+}
+
 void renderTexture(texture* t, SDL_Renderer* renderer, int x, int y, SDL_Rect* clip) {
   SDL_Rect renderQuad = {x, y, t->width, t->height};
   if (clip != NULL) {

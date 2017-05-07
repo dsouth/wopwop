@@ -14,8 +14,7 @@ void close();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
-SDL_Rect gSpriteClips[4];
-texture* gSpriteSheetTexture;
+texture* gColors;
 
 int init() {
   int success = 0;
@@ -43,12 +42,12 @@ int init() {
       }
     }
   }
-  gSpriteSheetTexture = init_texture();
+  gColors = init_texture();
   return success;
 }
 
 void close() {
-  freeTexture(gSpriteSheetTexture);
+  freeTexture(gColors);
   SDL_DestroyRenderer(gRenderer);
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
@@ -59,31 +58,10 @@ void close() {
 
 int loadMedia() {
   int success = 1;
-  if(!loadTextureFromFile(gSpriteSheetTexture, gRenderer, "res/dots.png")){
-    printf("Failed to load sprite sheet texture!\n");
+  if(!loadTextureFromFile(gColors, gRenderer, "res/colors.png")){
+    printf("Failed to load colors texture!\n");
     success = 0;
-  } else {
-    gSpriteClips[0].x = 0;
-    gSpriteClips[0].y = 0;
-    gSpriteClips[0].w = 100;
-    gSpriteClips[0].h = 100;
-
-    gSpriteClips[1].x = 100;
-    gSpriteClips[1].y = 0;
-    gSpriteClips[1].w = 100;
-    gSpriteClips[1].h = 100;
-
-    gSpriteClips[2].x = 0;
-    gSpriteClips[2].y = 100;
-    gSpriteClips[2].w = 100;
-    gSpriteClips[2].h = 100;
-
-    gSpriteClips[3].x = 100;
-    gSpriteClips[3].y = 100;
-    gSpriteClips[3].w = 100;
-    gSpriteClips[3].h = 100;
   }
-
   return success;
 }
 
@@ -98,21 +76,41 @@ int main(int argc, char* args[]) {
 
   int quit = 0;
   SDL_Event e;
+  Uint8 r = 255;
+  Uint8 g = 255;
+  Uint8 b = 255;
 
   while (!quit) {
     while (SDL_PollEvent(&e) != 0) {
       if (e.type == SDL_QUIT) {
         quit = 1;
+      } else if (e.type == SDL_KEYDOWN) {
+        switch(e.key.keysym.sym) {
+        case SDLK_q:
+          r += 32;
+          break;
+        case SDLK_w:
+          g += 32;
+          break;
+        case SDLK_e:
+          b += 32;
+          break;
+        case SDLK_a:
+          r -= 32;
+          break;
+        case SDLK_s:
+          g -= 32;
+          break;
+        case SDLK_d:
+          b -= 32;
+          break;
+        }
       }
-
+        
       SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
       SDL_RenderClear(gRenderer);
-
-      renderTexture(gSpriteSheetTexture, gRenderer, 0, 0, &gSpriteClips[0]);
-      renderTexture(gSpriteSheetTexture, gRenderer, SCREEN_WIDTH - gSpriteClips[1].w, 0, &gSpriteClips[1]);
-      renderTexture(gSpriteSheetTexture, gRenderer, 0, SCREEN_HEIGHT - gSpriteClips[2].h, &gSpriteClips[2]);
-      renderTexture(gSpriteSheetTexture, gRenderer, SCREEN_WIDTH - gSpriteClips[3].w, SCREEN_HEIGHT - gSpriteClips[3].h, &gSpriteClips[3]);
-
+      setColorTexture(gColors, r, g, b);
+      renderTexture(gColors, gRenderer, 0, 0, NULL);
       SDL_RenderPresent(gRenderer);
     }
   }
