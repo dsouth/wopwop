@@ -8,6 +8,7 @@ struct texture {
 
 texture* init_texture();
 int loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
+int loadTextureFromRenderedText(texture* t, SDL_Renderer* r, TTF_Font* f, const char* text, SDL_Color textColor);
 void setColorTexture(texture* t, Uint8 r, Uint8 g, Uint8 b);
 void setBlendModeTexture(texture* t, SDL_BlendMode bleeding);
 void setAlphaTexture(texture* t, Uint8 a);

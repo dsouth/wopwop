@@ -1,5 +1,5 @@
 CC = clang
-SDL = -Llib/ -lSDL2 -lSDL2_image
+SDL = -Llib/ -lSDL2 -lSDL2_image -lSDL2_ttf
 # If your compiler is a bit older you may need to change -std=c++11 to -std=c++0x
 CFLAGS = -Wall -c -Iinclude
 LDFLAGS = $(SDL)
