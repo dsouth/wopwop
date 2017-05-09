@@ -87,5 +87,6 @@ void freeTexture(texture* t) {
     t->width = 0;
     t->height = 0;
   }
-  free(t);
+    // isn't this required? Seems to cause all sort of issues if this happens... :(
+//  free(t);
 }
