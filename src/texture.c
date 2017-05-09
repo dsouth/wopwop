@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "texture.h"
 
 texture* init_texture() {
@@ -86,4 +87,6 @@ void freeTexture(texture* t) {
     t->width = 0;
     t->height = 0;
   }
+    // isn't this required? Seems to cause all sort of issues if this happens... :(
+//  free(t);
 }

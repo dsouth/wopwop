@@ -110,6 +110,100 @@ depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named wopwop
+
+# Build rule for target.
+wopwop: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wopwop
+.PHONY : wopwop
+
+# fast build rule for target.
+wopwop/fast:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/build
+.PHONY : wopwop/fast
+
+src/button.o: src/button.c.o
+
+.PHONY : src/button.o
+
+# target to build an object file
+src/button.c.o:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/button.c.o
+.PHONY : src/button.c.o
+
+src/button.i: src/button.c.i
+
+.PHONY : src/button.i
+
+# target to preprocess a source file
+src/button.c.i:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/button.c.i
+.PHONY : src/button.c.i
+
+src/button.s: src/button.c.s
+
+.PHONY : src/button.s
+
+# target to generate assembly for a file
+src/button.c.s:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/button.c.s
+.PHONY : src/button.c.s
+
+src/main.o: src/main.c.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.c.o:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/main.c.o
+.PHONY : src/main.c.o
+
+src/main.i: src/main.c.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.c.i:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/main.c.i
+.PHONY : src/main.c.i
+
+src/main.s: src/main.c.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.c.s:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/main.c.s
+.PHONY : src/main.c.s
+
+src/texture.o: src/texture.c.o
+
+.PHONY : src/texture.o
+
+# target to build an object file
+src/texture.c.o:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/texture.c.o
+.PHONY : src/texture.c.o
+
+src/texture.i: src/texture.c.i
+
+.PHONY : src/texture.i
+
+# target to preprocess a source file
+src/texture.c.i:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/texture.c.i
+.PHONY : src/texture.c.i
+
+src/texture.s: src/texture.c.s
+
+.PHONY : src/texture.s
+
+# target to generate assembly for a file
+src/texture.c.s:
+	$(MAKE) -f CMakeFiles/wopwop.dir/build.make CMakeFiles/wopwop.dir/src/texture.c.s
+.PHONY : src/texture.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -118,6 +212,16 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... wopwop"
+	@echo "... src/button.o"
+	@echo "... src/button.i"
+	@echo "... src/button.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/texture.o"
+	@echo "... src/texture.i"
+	@echo "... src/texture.s"
 .PHONY : help
 
 

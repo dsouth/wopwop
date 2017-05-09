@@ -7,13 +7,16 @@ EXE = game
 
 all: $(EXE)
 
-$(EXE): src/main.o src/texture.o
-	$(CC) $(LDFLAGS) src/main.o src/texture.o -o bin/$@
+$(EXE): src/main.o src/texture.o src/button.o
+	$(CC) $(LDFLAGS) src/main.o src/texture.o src/button.o -o bin/$@
 
 main.o: src/main.c
 	$(CC) $(CFLAGS) $< -o src/$@
 
 texture.o: src/texture.c
+	$(CC) $(CFLAGS) $< -o src/$@
+
+button.o: src/button.c
 	$(CC) $(CFLAGS) $< -o src/$@
 
 clean:
