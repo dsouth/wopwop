@@ -1,3 +1,8 @@
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+
+#ifndef TEXTURE_HEADER
+#define TEXTURE_HEADER
 typedef struct texture texture;
 
 struct texture {
@@ -5,6 +10,7 @@ struct texture {
   int width;
   int height;
 };
+#endif
 
 texture* init_texture();
 int loadTextureFromFile(texture* t, SDL_Renderer* r, const char* path);
