@@ -15,85 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cbc5723-8de4-41ec-b56a-05adde8b492b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_assert.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_atomic.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_audio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_bits.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_blendmode.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_clipboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_config.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_cpuinfo.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_egl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_endian.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_error.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_events.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_filesystem.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_gamecontroller.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_gesture.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_haptic.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_hints.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_image.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_joystick.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_keyboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_keycode.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_loadso.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_log.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_main.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_messagebox.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_mouse.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_mutex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_name.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengl_glext.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengles.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengles2.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengles2_gl2.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengles2_gl2ext.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengles2_gl2platform.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_opengles2_khrplatform.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_pixels.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_platform.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_power.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_quit.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_rect.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_render.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_revision.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_rwops.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_scancode.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_shape.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_stdinc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_surface.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_system.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_syswm.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_assert.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_common.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_compare.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_crc32.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_font.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_fuzzer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_harness.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_images.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_log.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_md5.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_test_random.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_thread.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_timer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_touch.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_ttf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_types.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_version.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/SDL_video.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/begin_code.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/SDL2/close_code.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libSDL2-2.0.0.dylib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libSDL2.dylib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libSDL2_image-2.0.0.dylib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libSDL2_image.dylib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libSDL2_ttf-2.0.0.dylib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libSDL2_ttf.dylib" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,11 +42,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="29">
+              <caret line="1" column="108" lean-forward="false" selection-start-line="1" selection-start-column="108" selection-end-line="1" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -233,6 +166,7 @@
         <option value="$PROJECT_DIR$/src/texture.h" />
         <option value="$PROJECT_DIR$/src/texture.c" />
         <option value="$PROJECT_DIR$/src/main.c" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -506,7 +440,7 @@
       <workItem from="1494286810161" duration="376000" />
       <workItem from="1494290833993" duration="9146000" />
       <workItem from="1494308681912" duration="2185000" />
-      <workItem from="1494323294080" duration="1043000" />
+      <workItem from="1494323294080" duration="1243000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'mouse_error'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;CMakeLists.txt&#10;#&#9;cmake-build-debug/CMakeCache.txt&#10;#&#9;cmake-build-debug/CMakeFiles/CMakeOutput.log&#10;#&#9;cmake-build-debug/CMakeFiles/Makefile.cmake&#10;#&#9;cmake-build-debug/CMakeFiles/Makefile2&#10;#&#9;cmake-build-debug/CMakeFiles/TargetDirectories.txt&#10;#&#9;cmake-build-debug/CMakeFiles/clion-log.txt&#10;#&#9;cmake-build-debug/CMakeFiles/progress.marks&#10;#&#9;cmake-build-debug/Makefile">
       <created>1494308741152</created>
@@ -522,11 +456,25 @@
       <option name="project" value="LOCAL" />
       <updated>1494324310481</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="lazy foo lesson 19 joystick (modified)">
+      <created>1494324378404</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1494324378404</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update Readme">
+      <created>1494324488169</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1494324488169</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14322000" />
+    <option name="totallyTimeSpent" value="14522000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -539,8 +487,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" show_stripe_button="true" weight="0.42987806" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="-1680" y="95" width="1680" height="1027" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -570,7 +519,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'mouse_error'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;CMakeLists.txt&#10;#&#9;cmake-build-debug/CMakeCache.txt&#10;#&#9;cmake-build-debug/CMakeFiles/CMakeOutput.log&#10;#&#9;cmake-build-debug/CMakeFiles/Makefile.cmake&#10;#&#9;cmake-build-debug/CMakeFiles/Makefile2&#10;#&#9;cmake-build-debug/CMakeFiles/TargetDirectories.txt&#10;#&#9;cmake-build-debug/CMakeFiles/clion-log.txt&#10;#&#9;cmake-build-debug/CMakeFiles/progress.marks&#10;#&#9;cmake-build-debug/Makefile" />
     <MESSAGE value="lazy foo lesson 19 joystick (modified)" />
-    <option name="LAST_COMMIT_MESSAGE" value="lazy foo lesson 19 joystick (modified)" />
+    <MESSAGE value="Update Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -597,11 +547,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/button.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../SDL/SDL2-2.0.5/src/render/opengl/SDL_render_gl.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -929,6 +874,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="1" column="108" lean-forward="false" selection-start-line="1" selection-start-column="108" selection-end-line="1" selection-end-column="108" />
           <folding />
         </state>
       </provider>
