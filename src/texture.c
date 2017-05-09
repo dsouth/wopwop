@@ -1,8 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "texture.h"
 
 texture* init_texture() {
@@ -71,13 +69,14 @@ void renderTexture(texture* t,
                    SDL_Rect* clip,
                    double angle,
                    SDL_Point* center,
-                   SDL_RendererFlip flip) {
+                   SDL_RendererFlip* flip) {
+  SDL_RendererFlip theFlip = flip == NULL ? SDL_FLIP_NONE : *flip;
   SDL_Rect renderQuad = {x, y, t->width, t->height};
   if (clip != NULL) {
     renderQuad.w = clip->w;
     renderQuad.h = clip->h;
   }
-  SDL_RenderCopyEx(renderer, t->texture, clip, &renderQuad, angle, center, flip);
+  SDL_RenderCopyEx(renderer, t->texture, clip, &renderQuad, angle, center, theFlip);
 }
 
 void freeTexture(texture* t) {

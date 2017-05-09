@@ -25,5 +25,5 @@ void renderTexture(texture* t,
                    SDL_Rect* clip,
                    double angle,
                    SDL_Point* center,
-                   SDL_RendererFlip flip);
+                   SDL_RendererFlip* flip);
 void freeTexture(texture* t);

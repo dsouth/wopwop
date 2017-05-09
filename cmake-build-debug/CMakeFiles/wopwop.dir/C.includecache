@@ -37,10 +37,6 @@ SDL2/SDL_image.h
 -
 SDL2/SDL_ttf.h
 -
-stdio.h
--
-stdlib.h
--
 texture.h
 /Users/dsouth/development/code/games/wopwop/src/texture.h
 
